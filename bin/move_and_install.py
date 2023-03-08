@@ -3,7 +3,7 @@ import sys
 import shutil
 
 x86_PROGRAM_FILES_PATH = R"C:\Program Files (x86)"
-START_MENU_PATH = R"C:\ProgramData\Microsoft\Windows\Start Menu"
+START_MENU_PATH = R"C:\ProgramData\Microsoft\Windows\Start Menu\Programs"
 
 def move_and_install(program_directory, icon_shortcut):
     program_dest = os.path.join(x86_PROGRAM_FILES_PATH, os.path.basename(program_directory))

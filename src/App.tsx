@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { Command } from "@tauri-apps/api/shell";
-import { invoke } from "@tauri-apps/api/tauri";
 import { open } from "@tauri-apps/api/dialog";
 import { exists } from "@tauri-apps/api/fs";
 import "./App.css";
 
 function App() {
-  const [fileName, setFileName] = useState("Choose Directory");
-  const [iconName, setIconName] = useState("Choose File");
+  const [fileName, setFileName] = useState("");
+  const [iconName, setIconName] = useState("");
   const [status, setStatus] = useState("");
   const selectFileOrDirectory = async (
     setName: React.Dispatch<React.SetStateAction<string>>,
@@ -44,8 +43,8 @@ function App() {
       console.error(error);
     });
 
-    setFileName("Choose Directory");
-    setIconName("Choose File");
+    setFileName("");
+    setIconName("");
   };
 
   return (
@@ -58,7 +57,7 @@ function App() {
           type="submit"
           onClick={() => selectFileOrDirectory(setFileName, true)}
         >
-          {fileName}
+          {fileName || "Choose Directory"}
         </button>
       </div>
 
@@ -68,7 +67,7 @@ function App() {
           type="submit"
           onClick={() => selectFileOrDirectory(setIconName, false)}
         >
-          {iconName}
+          {iconName || "Choose File"}
         </button>
       </div>
 
